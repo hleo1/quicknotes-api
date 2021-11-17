@@ -1,13 +1,14 @@
 const express = require("express");
 const db = require("./data/db");
 const NoteDao = require("./data/NoteDao");
+const app = express();
+const port = process.env.PORT || 5000;
 
 
 const notes = new NoteDao();
 db.connect();
 
-const app = express();
-const port = process.env.PORT || 5000;
+
 
 app.use(express.json());
 
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 app.get("/api/notes", async (req, res) => {
   const { query } = req.query;
   const data = await notes.readAll(query);
-  res.json({ data });
+  res.json({ data: data ? data : [] });
 });
 
 app.get("/api/notes/:id", async (req, res) => {

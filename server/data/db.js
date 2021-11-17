@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
 require("dotenv").config();
+const mongoose = require("mongoose");
+
 
 // TODO replace <password> with the password for quicknote-admin
 

@@ -3,6 +3,11 @@ const ApiError = require("../model/ApiError");
 
 class NoteDao {
 
+
+
+  constructor() {
+    this.notes = [];
+  }
   //Pre: title and text are not undefined, and title is not empty
   async create({ title, text }) {
     if (title === undefined || title === "") {
@@ -29,16 +34,6 @@ class NoteDao {
     if (note === null) {
       throw new ApiError(404, "There is no note with the given ID!");
     }
-
-    // if (title !== undefined) {
-    //   this.notes[index].title = title;
-    // }
-
-    // if (text !== undefined) {
-    //   this.notes[index].text = text;
-    // }
-
-    // return this.notes[index];
     return note;
   }
 
